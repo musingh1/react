@@ -1,5 +1,7 @@
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
+import whatInput from 'what-input'
+import * as cx from 'classnames'
 
 import { UIComponent, childrenExist, customPropTypes } from '../../lib'
 import Icon from '../Icon'
@@ -116,17 +118,23 @@ class Button extends UIComponent<Extendable<IButtonProps>, any> {
     accessibility: ButtonBehavior as Accessibility,
   }
 
+  public state = {
+    buttonClasses: undefined,
+  }
+
   public renderComponent({ ElementType, classes, accessibility, rest }): React.ReactNode {
     const { children, content, disabled, iconPosition } = this.props
     const hasChildren = childrenExist(children)
+    const { buttonClasses = classes.root } = this.state
 
     return (
       <ElementType
-        className={classes.root}
+        className={buttonClasses}
         disabled={disabled}
         onClick={this.handleClick}
         {...accessibility.attributes.root}
         {...rest}
+        onFocus={this.handleFocus.bind(this, classes)}
       >
         {hasChildren && children}
         {!hasChildren && iconPosition !== 'after' && this.renderIcon()}
@@ -158,6 +166,13 @@ class Button extends UIComponent<Extendable<IButtonProps>, any> {
     if (onClick) {
       onClick(e, this.props)
     }
+  }
+
+  private handleFocus = classes => {
+    this.setState({
+      buttonClasses:
+        whatInput.ask() === 'mouse' ? cx(classes.root, classes.focusFromMouse) : classes.root,
+    })
   }
 }
 

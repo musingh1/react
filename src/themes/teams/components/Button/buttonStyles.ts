@@ -96,6 +96,9 @@ const buttonStyles: IComponentPartStylesInput = {
           }),
     }
   },
+  focusFromMouse: () => ({
+    outline: '0',
+  }),
 }
 
 export default buttonStyles
