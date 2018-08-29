@@ -33,6 +33,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add strict null checks for generated TS types @smykhailov ([#108](https://github.com/stardust-ui/react/pull/108))
 - Export themes at `@stardust-ui/react/themes` @levithomason ([#145](https://github.com/stardust-ui/react/pull/145))
 - Add support for Menu `vertical pointing` prop @miroslavstastny ([#123](https://github.com/stardust-ui/react/pull/123))
+- Add ChatMessage `avatar` prop @Bugaa92 ([#159](https://github.com/stardust-ui/react/pull/159))
 
 ### Documentation
 - Add a Quick Start guide @levithomason ([#145](https://github.com/stardust-ui/react/pull/145))
